@@ -18,6 +18,7 @@ public class Main {
     private static GRBEnv env;
     private static GRBModel model;
 
+
     public static void main(String[] args) throws GRBException {
         try {
             leggiFile(PATH);
@@ -144,6 +145,7 @@ public class Main {
             }
         }
     }
+
 
     /**
      * da copia33.txt abbiamo creato un altro file con solo i nodi e gli archi per evitare di mettere tutto a mano

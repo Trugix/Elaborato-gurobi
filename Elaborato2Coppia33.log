@@ -2845,3 +2845,58 @@ Solution count 5: 123 125 138 ... 310
 
 Optimal solution found (tolerance 1.00e-04)
 Best objective 1.230000000000e+02, best bound 1.230000000000e+02, gap 0.0000%
+
+Gurobi 9.5.1 (win64, Java) logging started Fri May 20 18:10:56 2022
+
+Set parameter Username
+Academic license - for non-commercial use only - expires 2022-07-18
+Set parameter Threads to value 12
+Gurobi Optimizer version 9.5.1 build v9.5.1rc2 (win64)
+Thread count: 8 physical cores, 16 logical processors, using up to 12 threads
+Optimize a model with 2208 rows, 2161 columns and 10308 nonzeros
+Model fingerprint: 0xb729d0c7
+Variable types: 0 continuous, 2161 integer (0 binary)
+Coefficient statistics:
+  Matrix range     [1e+00, 5e+01]
+  Objective range  [2e+00, 1e+01]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 5e+01]
+Presolve removed 136 rows and 46 columns
+Presolve time: 0.01s
+Presolved: 2072 rows, 2115 columns, 10080 nonzeros
+Variable types: 0 continuous, 2115 integer (2070 binary)
+Found heuristic solution: objective 310.0000000
+
+Root relaxation: objective 1.163111e+02, 160 iterations, 0.00 seconds (0.00 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0  116.31111    0   58  310.00000  116.31111  62.5%     -    0s
+     0     0  123.00000    0  117  310.00000  123.00000  60.3%     -    0s
+H    0     0                     139.0000000  123.00000  11.5%     -    0s
+H    0     0                     138.0000000  123.00000  10.9%     -    0s
+H    0     0                     125.0000000  123.00000  1.60%     -    0s
+     0     0  123.00000    0  119  125.00000  123.00000  1.60%     -    0s
+     0     0  123.00000    0   85  125.00000  123.00000  1.60%     -    0s
+     0     0  123.00000    0   65  125.00000  123.00000  1.60%     -    0s
+     0     0  123.00000    0  126  125.00000  123.00000  1.60%     -    0s
+H    0     0                     123.0000000  123.00000  0.00%     -    0s
+     0     0  123.00000    0  122  123.00000  123.00000  0.00%     -    0s
+
+Cutting planes:
+  Learned: 13
+  Implied bound: 17
+  MIR: 3
+  Zero half: 1
+  RLT: 1
+  Relax-and-lift: 6
+  BQP: 1
+
+Explored 1 nodes (1759 simplex iterations) in 0.36 seconds (0.28 work units)
+Thread count was 12 (of 16 available processors)
+
+Solution count 5: 123 125 138 ... 310
+
+Optimal solution found (tolerance 1.00e-04)
+Best objective 1.230000000000e+02, best bound 1.230000000000e+02, gap 0.0000%
