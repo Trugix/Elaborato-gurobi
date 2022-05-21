@@ -15,8 +15,32 @@ public class Main {
     private static GRBVar[] u;
     private static ArrayList<Integer> ordineSol = new ArrayList<>();
     private static int DIM;
+
     private static GRBEnv env;
     private static GRBModel model;
+
+    //costanti quesito 3
+    private static final int verticeSpeciale = 30;
+    private static final double A = 0.09;
+
+    private static final int B1 = 37;
+    private static final int B2 = 41;
+    private static final int C = 125;
+
+    private static final int D1 = 17;
+    private static final int D2 = 4;
+    private static final int E1 = 28;
+    private static final int E2 = 11;
+    private static final int F1 = 18;
+    private static final int F2 = 12;
+
+    private static final int G1 = 32;
+    private static final int G2 = 41;
+    private static final int H1 = 14;
+    private static final int H2 = 21;
+    private static final int I1 = 12;
+    private static final int I2 = 7;
+    private static final int L = 5;
 
 
     public static void main(String[] args) throws GRBException {
@@ -26,12 +50,13 @@ public class Main {
             e.printStackTrace();
             throw new RuntimeException(e);
         }
+
         initialize();
         //env.set(GRB.IntParam.PoolSearchMode, 2);
         //env.set(GRB.IntParam.PoolSolutions, 10);
         model.optimize();
         //todo     printCiclo();
-        stampaOut();
+
         //System.out.println(model.get(GRB.IntAttr.Status));
         model.dispose();
         env.dispose();
@@ -144,7 +169,7 @@ public class Main {
                 }
             }
         }
-    }
+    }//todo
 
 
     /**
@@ -206,21 +231,20 @@ public class Main {
             u[i] = model.addVar(0, GRB.INFINITY, 0, GRB.INTEGER, "u_" + i);
         for (int i = 0; i < DIM; i++) {
             for (int j = 0; j < DIM; j++)
-                x[i][j] = model.addVar(0, 1, 0, GRB.INTEGER, "x_" + i + "_" + j);
+                x[i][j] = model.addVar(0, 1, 0, GRB.BINARY, "x_" + i + "_" + j);
         }
+        model.set(GRB.IntParam.LogToConsole, 0);
         loadObj();
         loadConstr();
     }
 
     private static void loadObj() throws GRBException {
-        GRBLinExpr obj = new GRBLinExpr();
-        for (int i = 0; i < DIM; i++) {
-            for (int j = 0; j < DIM; j++)
-                if (i != j)
-                    obj.addTerm(costi[i][j], x[i][j]);
-        }
+        GRBQuadExpr obj = creaObiettivoQuad();
+
         model.setObjective(obj, GRB.MINIMIZE);
     }
+
+
 
     private static void loadConstr() throws GRBException {
         loadConstrDiagonale();
@@ -228,6 +252,125 @@ public class Main {
         loadConstrSommaColonne();
 
         loadConstrOrdine();
+
+        model.optimize();
+        stampaOut();
+        printQuesito1();
+        printQuesito2();
+
+        loadConstrCostoMaxV(); //3a
+        loadConstrArcoB(); //3b
+        loadConstrArcoD();  //3c
+        loadConstrCostAgg();  //3d
+
+        model.optimize();
+        printQuesito3();
+    }
+
+    private static void loadConstrCostAgg() {
+
+    }
+
+    private static void loadConstrArcoD() throws GRBException
+    {
+        GRBLinExpr constrArcoD1 = new GRBLinExpr();
+        GRBLinExpr constrArcoD2 = new GRBLinExpr();
+
+        constrArcoD1.addTerm(1, x[D1][D2]);
+        constrArcoD2.addTerm(1, x[D2][D1]);
+        constrArcoD1.addConstant(1);
+        constrArcoD2.addConstant(1);
+
+        GRBLinExpr usoArchiCD = new GRBLinExpr();
+        usoArchiCD.addTerm(1, x[E1][E2]);
+        usoArchiCD.addTerm(1, x[E2][E1]);
+        usoArchiCD.addTerm(1, x[F1][F2]);
+        usoArchiCD.addTerm(1, x[F2][F1]);
+
+        model.addConstr(constrArcoD1, GRB.LESS_EQUAL, usoArchiCD, "constrArcoD1");
+        model.addConstr(constrArcoD2, GRB.LESS_EQUAL, usoArchiCD, "constrArcoD2");
+
+    }
+
+
+    private static void loadConstrArcoB() throws GRBException {
+        GRBQuadExpr constrArcoB1 = new GRBQuadExpr();
+        GRBQuadExpr constrArcoB2 = new GRBQuadExpr();//todo vedere se è giusto
+
+        GRBLinExpr objFantoccio1 = creaObiettivo();
+       /* GRBLinExpr arcoUsato1 = new GRBLinExpr();
+        arcoUsato1.addTerm(1, x[nodoB1][nodoB2]);
+        objFantoccio1.multAdd(1, arcoUsato1);*/
+
+        GRBLinExpr objFantoccio2 = creaObiettivo();
+      /*  GRBLinExpr arcoUsato2 = new GRBLinExpr();
+        arcoUsato2.addTerm(1, x[nodoB2][nodoB1]);
+        objFantoccio2.multAdd(1, arcoUsato2);*/
+        for (int i=0; i<objFantoccio1.size();i++) {
+            constrArcoB1.addTerm(1, objFantoccio1.getVar(i), x[B1][B2]);
+        }
+        for (int i=0; i<objFantoccio2.size();i++) {
+            constrArcoB2.addTerm(1, objFantoccio2.getVar(i), x[B2][B1]);
+        }
+
+        model.addQConstr(constrArcoB1, GRB.LESS_EQUAL, C, "constrArcoB1");
+        model.addQConstr(constrArcoB2, GRB.LESS_EQUAL, C, "constrArcoB2");
+    }
+
+    /**
+     * metodo di servizio
+     * crea una funzione obiettivo
+     *
+     * @return funzione obiettivo
+     */
+    private static GRBLinExpr creaObiettivo() {
+        GRBLinExpr obj = new GRBLinExpr();
+        for (int i = 0; i < DIM; i++) {
+            for (int j = 0; j < DIM; j++)
+                if (i != j)
+                    obj.addTerm(costi[i][j], x[i][j]);
+        }
+        return obj;
+    }
+
+    private static GRBQuadExpr creaObiettivoQuad() {
+        GRBQuadExpr obj = new GRBQuadExpr();
+        for (int i = 0; i < DIM; i++) {
+            for (int j = 0; j < DIM; j++)
+                if (i != j)
+                    obj.addTerm(costi[i][j], x[i][j]);
+        }
+        return obj;
+    }
+
+    /**
+     * per quesito 3
+     * constrain che stabilisca che il costo del vertice V debba essere minore od uguale dell`A% del costo totale
+     *
+     * @throws GRBException
+     */
+    private static void loadConstrCostoMaxV() throws GRBException {
+        // GRBVar sommaSpeciale = model.addVar(0, GRB.INFINITY, 0 , GRB.INTEGER, "sommaSpeciale");
+        //todo teoricamente fatto, maybe è giusto, maybe no
+        GRBLinExpr constrVertice1;
+        GRBLinExpr constrVertice2;
+        constrVertice1 = new GRBLinExpr();
+        GRBLinExpr objFantoccio = new GRBLinExpr();
+
+        for (int i = 0; i < DIM; i++) {
+            for (int j = 0; j < DIM; j++)
+                if (i != j)
+                    objFantoccio.addTerm(A * costi[i][j], x[i][j]);   //valore della funzione obiettivo all'A%
+        }
+        //creo i due constrain
+        for (int i = 0; i < DIM; i++)
+            constrVertice1.addTerm(costi[i][verticeSpeciale], x[i][verticeSpeciale]);
+        constrVertice2 = new GRBLinExpr();
+        for (int i = 0; i < DIM; i++)
+            constrVertice2.addTerm(costi[verticeSpeciale][i], x[verticeSpeciale][i]);
+
+        model.addConstr(constrVertice1, GRB.LESS_EQUAL, objFantoccio, "constrVertice1");
+        model.addConstr(constrVertice2, GRB.LESS_EQUAL, objFantoccio, "constrVertice2");
     }
 
     private static void loadConstrOrdine() throws GRBException {

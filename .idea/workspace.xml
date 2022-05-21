@@ -2,6 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="245e50d0-9f35-403f-bb9c-7b14b77d2519" name="Changes" comment="gurobi quesito 1 e 2">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Elaborato2Coppia33.log" beforeDir="false" afterPath="$PROJECT_DIR$/Elaborato2Coppia33.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+    </list>
+    <list id="1fad0c2b-1c93-41f5-9bbc-a29ec5205cb0" name="Changes by Edoardo" comment="">
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -19,8 +24,54 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/src/Main.java">
+      <ranges>
+        <range start1="10" end1="10" start2="10" end2="11" changelist="1fad0c2b-1c93-41f5-9bbc-a29ec5205cb0" />
+        <range start1="17" end1="17" start2="18" end2="19" changelist="245e50d0-9f35-403f-bb9c-7b14b77d2519" />
+        <range start1="20" end1="20" start2="22" end2="45" changelist="245e50d0-9f35-403f-bb9c-7b14b77d2519" />
+        <range start1="31" end1="32" start2="56" end2="57" changelist="1fad0c2b-1c93-41f5-9bbc-a29ec5205cb0" />
+        <range start1="33" end1="34" start2="58" end2="59" changelist="245e50d0-9f35-403f-bb9c-7b14b77d2519" />
+        <range start1="40" end1="40" start2="65" end2="70" changelist="1fad0c2b-1c93-41f5-9bbc-a29ec5205cb0" />
+        <range start1="42" end1="44" start2="72" end2="72" changelist="1fad0c2b-1c93-41f5-9bbc-a29ec5205cb0" />
+        <range start1="46" end1="46" start2="74" end2="108" changelist="1fad0c2b-1c93-41f5-9bbc-a29ec5205cb0" />
+        <range start1="51" end1="52" start2="113" end2="115" changelist="1fad0c2b-1c93-41f5-9bbc-a29ec5205cb0" />
+        <range start1="56" end1="58" start2="119" end2="121" changelist="1fad0c2b-1c93-41f5-9bbc-a29ec5205cb0" />
+        <range start1="59" end1="60" start2="122" end2="122" changelist="1fad0c2b-1c93-41f5-9bbc-a29ec5205cb0" />
+        <range start1="62" end1="63" start2="124" end2="147" changelist="1fad0c2b-1c93-41f5-9bbc-a29ec5205cb0" />
+        <range start1="67" end1="70" start2="151" end2="155" changelist="1fad0c2b-1c93-41f5-9bbc-a29ec5205cb0" />
+        <range start1="83" end1="84" start2="168" end2="169" changelist="1fad0c2b-1c93-41f5-9bbc-a29ec5205cb0" />
+        <range start1="85" end1="87" start2="170" end2="172" changelist="1fad0c2b-1c93-41f5-9bbc-a29ec5205cb0" />
+        <range start1="91" end1="92" start2="176" end2="177" changelist="1fad0c2b-1c93-41f5-9bbc-a29ec5205cb0" />
+        <range start1="95" end1="119" start2="180" end2="180" changelist="1fad0c2b-1c93-41f5-9bbc-a29ec5205cb0" />
+        <range start1="146" end1="147" start2="207" end2="208" changelist="245e50d0-9f35-403f-bb9c-7b14b77d2519" />
+        <range start1="148" end1="149" start2="209" end2="209" changelist="1fad0c2b-1c93-41f5-9bbc-a29ec5205cb0" />
+        <range start1="150" end1="151" start2="210" end2="211" changelist="1fad0c2b-1c93-41f5-9bbc-a29ec5205cb0" />
+        <range start1="152" end1="154" start2="212" end2="213" changelist="1fad0c2b-1c93-41f5-9bbc-a29ec5205cb0" />
+        <range start1="155" end1="198" start2="214" end2="214" changelist="1fad0c2b-1c93-41f5-9bbc-a29ec5205cb0" />
+        <range start1="202" end1="204" start2="218" end2="220" changelist="1fad0c2b-1c93-41f5-9bbc-a29ec5205cb0" />
+        <range start1="208" end1="209" start2="224" end2="225" changelist="245e50d0-9f35-403f-bb9c-7b14b77d2519" />
+        <range start1="214" end1="214" start2="230" end2="235" changelist="1fad0c2b-1c93-41f5-9bbc-a29ec5205cb0" />
+        <range start1="215" end1="221" start2="236" end2="238" changelist="245e50d0-9f35-403f-bb9c-7b14b77d2519" />
+        <range start1="223" end1="223" start2="240" end2="242" changelist="245e50d0-9f35-403f-bb9c-7b14b77d2519" />
+        <range start1="224" end1="224" start2="243" end2="248" changelist="1fad0c2b-1c93-41f5-9bbc-a29ec5205cb0" />
+        <range start1="230" end1="230" start2="254" end2="374" changelist="245e50d0-9f35-403f-bb9c-7b14b77d2519" />
+        <range start1="232" end1="232" start2="376" end2="377" changelist="1fad0c2b-1c93-41f5-9bbc-a29ec5205cb0" />
+        <range start1="259" end1="259" start2="404" end2="411" changelist="1fad0c2b-1c93-41f5-9bbc-a29ec5205cb0" />
+        <range start1="265" end1="266" start2="417" end2="418" changelist="1fad0c2b-1c93-41f5-9bbc-a29ec5205cb0" />
+        <range start1="269" end1="269" start2="421" end2="427" changelist="1fad0c2b-1c93-41f5-9bbc-a29ec5205cb0" />
+        <range start1="275" end1="276" start2="433" end2="434" changelist="1fad0c2b-1c93-41f5-9bbc-a29ec5205cb0" />
+        <range start1="279" end1="279" start2="437" end2="443" changelist="1fad0c2b-1c93-41f5-9bbc-a29ec5205cb0" />
+        <range start1="285" end1="286" start2="449" end2="450" changelist="1fad0c2b-1c93-41f5-9bbc-a29ec5205cb0" />
+        <range start1="288" end1="288" start2="452" end2="503" changelist="1fad0c2b-1c93-41f5-9bbc-a29ec5205cb0" />
+      </ranges>
+    </file>
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="29Qb9zRRbrjImSAeDsz9LiV94g4" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -28,18 +79,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Workspace/ElaboratoGruppo33/src&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "last_opened_file_path": "D:/Workspace/ElaboratoGruppo33/src",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Workspace\ElaboratoGruppo33\src" />
@@ -71,7 +123,8 @@
       <option name="presentableId" value="Default" />
       <updated>1653048110310</updated>
       <workItem from="1653048594494" duration="2004000" />
-      <workItem from="1653050623822" duration="11520000" />
+      <workItem from="1653050623822" duration="11769000" />
+      <workItem from="1653120027644" duration="7757000" />
     </task>
     <task id="LOCAL-00001" summary="gurobi quesito 1 e 2">
       <created>1653062549438</created>
@@ -80,7 +133,14 @@
       <option name="project" value="LOCAL" />
       <updated>1653062549438</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="gurobi quesito 1 e 2">
+      <created>1653063070751</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1653063070751</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
