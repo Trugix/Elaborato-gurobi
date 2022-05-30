@@ -8,6 +8,7 @@ import java.util.Collections;
 
 public class Main {
 
+    //muro di costanti
     private static final String PATH = "src/load.txt";
     private static int[][] costi;
 
@@ -52,47 +53,105 @@ public class Main {
         }
 
         initialize();
-        //env.set(GRB.IntParam.PoolSearchMode, 2);
-        //env.set(GRB.IntParam.PoolSolutions, 10);
-        model.optimize();
-        //todo     printCiclo();
 
-        //System.out.println(model.get(GRB.IntAttr.Status));
         model.dispose();
         env.dispose();
 
     }
 
-    private static void stampaOut() throws GRBException {
+    /**
+     * Stampa a schermo le richieste dei quesiti
+     */
+    private static void stampaOut()  {
         System.out.println("\n\nGRUPPO 33\nComponenti: Cesari, Signoroni\n");
-        printQuesito1();
-        printQuesito2();
     }
 
+    /**
+     * Stampa a schermo le richieste del quesito 1
+     *
+     * @throws GRBException eccezione di gurobi da gestire
+     */
+    private static void printQuesito1() throws GRBException {
+
+        System.out.println("Quesito 1:");
+        System.out.println("Funzione obiettivo: " + model.get(GRB.DoubleAttr.ObjVal)); //valore funzione obiettivo
+        System.out.print("Ciclo ottimo 1: [0");
+        ArrayList<Integer> ciclo = new ArrayList<>();
+        for (GRBVar num : u) {
+            ciclo.add((int) num.get(GRB.DoubleAttr.X));
+        }
+        Collections.sort(ciclo);//ordino il vettore in base all'ordine di percorrenza
+        for (Integer n : ciclo) {
+            for (GRBVar num : u) { //stampo l`ordine di percorrenza
+                if (n == (int) num.get(GRB.DoubleAttr.X)) {
+                    int t = num.index();
+                    int r = t + 1;
+                    ordineSol.add(r);
+                    System.out.print(", " + (t + 1));
+                    break;
+                }
+            }
+        }
+        System.out.println(", 0]");
+    }
+
+    /**
+     * Stampa a schermo la richiesta del quesito 2
+     *
+     * @throws GRBException eccezione di gurobi da gestire
+     */
     private static void printQuesito2() throws GRBException {
 
 
         System.out.println("\n\nQuesito 2:");
         Collections.reverse(ordineSol);
-        if(checkOttimo(ordineSol)) {
+        if (checkCosto(ordineSol))  //stampa il quesito 2 solo se il check ha successo
+        {
             System.out.print("Ciclo ottimo 2: [0");
             for (Integer n : ordineSol)
                 System.out.print(", " + n);
             System.out.println(", 0]");
-        }else {
-            System.out.print("Non vi è una seconda soluzione ottima con valore " + (int)model.get(GRB.DoubleAttr.ObjVal));
+        } else {
+            System.out.print("Non vi è una seconda soluzione ottima con valore " + (int) model.get(GRB.DoubleAttr.ObjVal));
         }
-
     }
 
-
+    /**
+     * stampa a schermo il quesito 3
+     *
+     * @throws GRBException eccezione di gurobi da gestire
+     */
+    private static void printQuesito3() throws GRBException
+    {
+        System.out.println("\n\nQuesito 3:");
+        System.out.println("Funzione obiettivo: " + model.get(GRB.DoubleAttr.ObjVal)); //valore funzione obiettivo
+        System.out.print("Ciclo ottimo 3: [0");
+        ArrayList<Integer> ciclo = new ArrayList<>();
+        for (GRBVar num : u) {
+            ciclo.add((int) num.get(GRB.DoubleAttr.X));
+        }
+        Collections.sort(ciclo); //ordino il vettore in base all'ordine di percorrenza
+        for (Integer n : ciclo) {
+            for (GRBVar num : u) { //stampo l`ordine di percorrenza
+                if (n == (int) num.get(GRB.DoubleAttr.X)) {
+                    int t = num.index();
+                    int r = t + 1;
+                    ordineSol.add(r);
+                    System.out.print(", " + (t + 1));
+                    break;
+                }
+            }
+        }
+        System.out.println(", 0]");
+    }
 
     /**
      * l'unico ottimo con valore uguale a quello del questito 1 che certamente esiste è se stesso al contrario, dato il grafo non orientato,
      * questo metodo si assicura che i due percorsi siano uguali
-     * @param order
-     * @return
-     * @throws GRBException
+     *
+     * @param order Arraylist da controllare
+     * @return true se il costo è lo stesso, false altrimenti
+     * @throws GRBException eccezione di gurobi da gestire
      */
     private static boolean checkCosto(ArrayList<Integer> order) throws GRBException {
         int somma = 0;
@@ -103,128 +162,26 @@ public class Main {
                 first = false;
                 somma += costi[0][order.get(i)];
             } else {
-                somma += costi[ordineSol.get(i-1)][ordineSol.get(i)];
-                //System.out.print(costi[ordineSol.get(i-1)][ordineSol.get(i)]+" ");
-                if (i == DIM-2) {
-                    somma+=costi[0][ordineSol.get(i)];
-                    //System.out.print(costi[0][ordineSol.get(i)]+" ");
-                }
+                somma += costi[order.get(i - 1)][order.get(i)];
+                if (i == DIM - 2)
+                    somma += costi[0][order.get(i)];
             }
         }
-        if (somma==(int)model.get(GRB.DoubleAttr.ObjVal))
-            return true;
-        return false;
+        return somma == (int) model.get(GRB.DoubleAttr.ObjVal);
     }
-
-    private static void printQuesito1() throws GRBException {
-
-        System.out.println("Quesito 1:");
-        System.out.println("Funzione obiettivo: " + model.get(GRB.DoubleAttr.ObjVal));
-        System.out.print("Ciclo ottimo 1: [0");
-        ArrayList<Integer> ciclo = new ArrayList<>();
-        for (GRBVar num : u) {
-            ciclo.add((int) num.get(GRB.DoubleAttr.X));
-        }
-        Collections.sort(ciclo);
-        for (Integer n : ciclo) {
-            for (GRBVar num : u) {
-                if (n == (int) num.get(GRB.DoubleAttr.X)) {
-                    int t = num.index();
-                    int r = t+1;
-                    ordineSol.add(r);
-                    System.out.print(", " + (t + 1));
-                    break;
-                }
-            }
-        }
-        System.out.println(", 0]");
-    }
-
-    private static void printCiclo() throws GRBException {
-        for (int i = 0; i < DIM; i++) {
-            for (int j = 0; j < DIM; j++)
-                System.out.print(x[i][j].get(GRB.DoubleAttr.X) + "\t\t");
-            System.out.println();
-        }
-        System.out.println();
-        System.out.println();
-        ArrayList<Integer> ciclo = new ArrayList<>();
-        for (GRBVar num : u) {
-            ciclo.add((int) num.get(GRB.DoubleAttr.X));
-            System.out.print(num.get(GRB.DoubleAttr.X) + "\t");
-        }
-        Collections.sort(ciclo);
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        for (Integer n : ciclo) {
-            //System.out.print(n+"\t");
-            for (GRBVar num : u) {
-                if (n == (int) num.get(GRB.DoubleAttr.X)) {
-                    System.out.print((num.index() + 1) + "\t");
-                    break;
-                }
-            }
-        }
-    }//todo
-
 
     /**
-     * da copia33.txt abbiamo creato un altro file con solo i nodi e gli archi per evitare di mettere tutto a mano
+     * inizializzo i parametri di gurobi e creo le variabili necessarie
      *
-     * @param filepath
-     * @throws IOException
+     * @throws GRBException eccezione di gurobi da gestire
      */
-    private static void leggiFile(String filepath) throws IOException {
-        BufferedReader br = new BufferedReader(new FileReader(filepath));
-        try {
-            StringBuilder sb = new StringBuilder();
-            String line = sb.toString();
-            boolean first = true;  //viene usata per inizializzare le dimensioni della tabella
-            while (line != null) {
-                int start;
-                int end;
-                int cost;
-                String[] riga;
-                sb.append(line);
-                sb.append(System.lineSeparator());
-                line = br.readLine();
-                if (line == null)
-                    break;
-                riga = line.split(" ");
-                if (first) {
-                    end = Integer.parseInt(riga[1]);
-                    first = false;
-                    DIM = end;
-                    costi = new int[DIM][DIM];
-                } else {
-                    start = Integer.parseInt(riga[0]);
-                    end = Integer.parseInt(riga[1]);
-                    cost = Integer.parseInt(riga[2]);
-                    costi[start][end] = cost;
-                    costi[end][start] = cost;
-                }
-            }
-            for (int i = 0; i < DIM; i++)
-                costi[i][i] = -1;
-
-          /*  for (int i = 0; i < DIM; i++) {
-                for (int j = 0; j < DIM; j++)
-                    System.out.print(costi[i][j] + "\t");
-                System.out.println();
-            }*/
-        } finally {
-            br.close();
-        }
-    }
-
     private static void initialize() throws GRBException {
         env = new GRBEnv("Elaborato2Coppia33.log");
         env.set(GRB.IntParam.Threads, 4);
         model = new GRBModel(env);
-        x = new GRBVar[DIM][DIM];
-        u = new GRBVar[DIM - 1];
-        for (int i = 0; i < DIM - 1; i++) //todo vedere se va bene
+        x = new GRBVar[DIM][DIM];   //variabili binarie che rappresentano se un arco è usato o no
+        u = new GRBVar[DIM - 1];    //variabili che rappresentano quando un nodo è stato raggiunto
+        for (int i = 0; i < DIM - 1; i++)
             u[i] = model.addVar(0, GRB.INFINITY, 0, GRB.INTEGER, "u_" + i);
         for (int i = 0; i < DIM; i++) {
             for (int j = 0; j < DIM; j++)
@@ -235,6 +192,11 @@ public class Main {
         loadConstr();
     }
 
+    /**
+     * creo la funzione obiettivo
+     *
+     * @throws GRBException eccezione di gurobi da gestire
+     */
     private static void loadObj() throws GRBException {
         GRBQuadExpr obj = creaObiettivoQuad();
 
@@ -243,6 +205,11 @@ public class Main {
 
 
 
+    /**
+     * creo tutti i vari constraint
+     *
+     * @throws GRBException eccezione di gurobi da gestire
+     */
     private static void loadConstr() throws GRBException {
         loadConstrDiagonale();
         loadConstrSommaRighe();
@@ -268,6 +235,13 @@ public class Main {
 
     }
 
+    /**
+     * per quesito 3
+     * constraint che imponga che l'arco d1-d2 venga usato solo se vengono usati
+     * gli archi e1-e2 ed f1-f2
+     *
+     * @throws GRBException eccezione di gurobi da gestire
+     */
     private static void loadConstrArcoD() throws GRBException
     {
         GRBLinExpr constrArcoDE = new GRBLinExpr();
@@ -276,12 +250,26 @@ public class Main {
         constrArcoDE.addTerm(1, x[E1][E2]); //arco "e' e suo simmetrico
         constrArcoDE.addTerm(1, x[E2][E1]);
 
+        constrArcoDF.addTerm(1, x[F1][F2]); //arco "f' e suo simmetrico
+        constrArcoDF.addTerm(1, x[F2][F1]);
+
+        model.addConstr(constrArcoDE, GRB.GREATER_EQUAL, x[D1][D2], "constrArcoDE1");
+        model.addConstr(constrArcoDE, GRB.GREATER_EQUAL, x[D2][D1], "constrArcoDE2");   //posso usare "d" solo se ho usato "e"
+
+        model.addConstr(constrArcoDF, GRB.GREATER_EQUAL, x[D1][D2], "constrArcoDF1");   //posso usare "d" solo se ho usato "f"
+        model.addConstr(constrArcoDF, GRB.GREATER_EQUAL, x[D2][D1], "constrArcoDF2");
+        //alla fine posso usare "d" solo se tutti e quattro i constraint sono veri, quindi posso usare "d" "solo se uso "e" ed "f"
     }
 
-
-    private static void loadConstrArcoB() throws GRBException {
+    /**
+     * per quesito 3
+     * constraint che controlla che se il lato b1-b2 viene percorso il costo sia minore di c
+     * @throws GRBException eccezione di gurobi da gestire
+     */
+    private static void loadConstrArcoB() throws GRBException
+    {
         GRBQuadExpr constrArcoB1 = new GRBQuadExpr();
-        GRBQuadExpr constrArcoB2 = new GRBQuadExpr();//todo vedere se è giusto
+        GRBQuadExpr constrArcoB2 = new GRBQuadExpr();
 
         GRBLinExpr objFantoccio = creaObiettivo();
 
@@ -309,7 +297,12 @@ public class Main {
         }
         return obj;
     }
-
+    /**
+     * metodo di servizio
+     * crea una funzione obiettivo
+     *
+     * @return funzione obiettivo
+     */
     private static GRBQuadExpr creaObiettivoQuad() {
         GRBQuadExpr obj = new GRBQuadExpr();
         for (int i = 0; i < DIM; i++) {
@@ -324,7 +317,7 @@ public class Main {
      * per quesito 3
      * constraint che stabilisca che il costo del vertice V (arco entrata + arco uscita) debba essere minore od uguale dell`A% del costo totale
      *
-     * @throws GRBException
+     * @throws GRBException eccezione di gurobi da gestire
      */
     private static void loadConstrCostoMaxV() throws GRBException {
         //todo entrata + uscita o separati?
@@ -345,12 +338,21 @@ public class Main {
         model.addConstr(constrVerticeSpeciale, GRB.LESS_EQUAL, objFantoccio, "constrVerticeSpeciale");
     }
 
+    /**
+     * per quesito 1
+     * per verificare che non ci siano loop interni e che ci sia un unico
+     * percorso totale abbiamo implementato i vincoli di Miller–Tucker–Zemlin
+     *
+     * @throws GRBException eccezione di gurobi da gestire
+     */
     private static void loadConstrOrdine() throws GRBException {
         GRBLinExpr constrOrd;
-        for (int i = 1; i < DIM; i++) {
-
-            for (int j = 1; j < DIM; j++) {
-                if (i != j) {
+        for (int i = 1; i < DIM; i++) //primo constraint
+        {
+            for (int j = 1; j < DIM; j++)
+            {
+                if (i != j)
+                {
                     constrOrd = new GRBLinExpr();
                     constrOrd.addTerm(1, u[i - 1]);
                     constrOrd.addTerm(-1, u[j - 1]);
@@ -361,7 +363,8 @@ public class Main {
         }
         GRBLinExpr constrVettUMin;
         GRBLinExpr constrVettUMax;
-        for (int i = 0; i < DIM - 1; i++) {
+        for (int i = 0; i < DIM - 1; i++) //secondo constraint
+        {
             constrVettUMin = new GRBLinExpr();
             constrVettUMin.addTerm(1, u[i]);
             constrVettUMax = new GRBLinExpr();
@@ -369,36 +372,99 @@ public class Main {
             model.addConstr(constrVettUMin, GRB.GREATER_EQUAL, 1, "costrVettMin_" + (i));
             model.addConstr(constrVettUMax, GRB.LESS_EQUAL, DIM - 1, "costrVettMax_" + (i));
         }
-
     }
 
-    private static void loadConstrDiagonale() throws GRBException { //TODO se non funzia mettere if in tutti constr
-
+    /**
+     * per quesito 1
+     * constraint che impone che le diagonali siano zero
+     * ovvero un nodo non può partire ed arrivare a se stesso
+     *
+     * @throws GRBException eccezione di gurobi da gestire
+     */
+    private static void loadConstrDiagonale() throws GRBException
+    {
         GRBLinExpr constrDiag;
         for (int i = 0; i < DIM; i++) {
             constrDiag = new GRBLinExpr();
             constrDiag.addTerm(1, x[i][i]);
-            model.addConstr(constrDiag, GRB.EQUAL, 0, "cDiag_" + (i + 1));
+            model.addConstr(constrDiag, GRB.EQUAL, 0, "cDiag_" + (i + 1));  //constraint per evitare che i nodi looppino con se stesso
         }
     }
 
+    /**
+     * per quesito 1
+     * controlla che la somma di ogni colonna sia esattamente 1
+     *
+     * @throws GRBException eccezione di gurobi da gestire
+     */
     private static void loadConstrSommaColonne() throws GRBException {
         GRBLinExpr constrSommaColonna;
         for (int j = 0; j < DIM; j++) {
             constrSommaColonna = new GRBLinExpr();
             for (int i = 0; i < DIM; i++)
                 constrSommaColonna.addTerm(1, x[i][j]);
-            model.addConstr(constrSommaColonna, GRB.EQUAL, 1, "costrSommaColonna_" + (j + 1));
+            model.addConstr(constrSommaColonna, GRB.EQUAL, 1, "costrSommaColonna_" + (j + 1));  //constraint colonne
         }
     }
 
+    /**
+     * per quesito 1
+     * controlla che la somma di ogni riga sia esattamente 1
+     *
+     * @throws GRBException eccezione di gurobi da gestire
+     */
     private static void loadConstrSommaRighe() throws GRBException {
         GRBLinExpr constrSommaRiga;
         for (int i = 0; i < DIM; i++) {
             constrSommaRiga = new GRBLinExpr();
             for (int j = 0; j < DIM; j++)
                 constrSommaRiga.addTerm(1, x[i][j]);
-            model.addConstr(constrSommaRiga, GRB.EQUAL, 1, "costrSommaRiga_" + (i + 1));
+            model.addConstr(constrSommaRiga, GRB.EQUAL, 1, "costrSommaRiga_" + (i + 1));    //constraint righe
+        }
+    }
+
+    /**
+     * Metodo di servizio
+     * da copia33.txt abbiamo creato un altro file con solo i nodi e gli archi per evitare di mettere tutto a mano
+     *
+     * @param filepath nome e percorso del file da leggere
+     * @throws IOException eccezzione di Input-Output
+     */
+    private static void leggiFile(String filepath) throws IOException {
+        BufferedReader br = new BufferedReader(new FileReader(filepath));
+        try {
+            StringBuilder sb = new StringBuilder();
+            String line = sb.toString();
+            boolean first = true;  //viene usata per inizializzare le dimensioni della tabella
+            while (true) {
+                int start;  //nodo di partenza
+                int end;    //nodo di arrivo
+                int cost;   //costo dell'arco
+                String[] riga;  //riga letta
+                sb.append(line);
+                sb.append(System.lineSeparator());
+                line = br.readLine();
+                if (line == null)   // in caso il file sia finito il ciclo si interrompe
+                    break;
+                riga = line.split(" "); //usiamo lo spazio come separatore delle String
+                if (first) {
+                    end = Integer.parseInt(riga[1]);
+                    first = false;
+                    DIM = end;
+                    costi = new int[DIM][DIM];
+                } else //costruisco la tabella dei costi
+                {
+                    start = Integer.parseInt(riga[0]);
+                    end = Integer.parseInt(riga[1]);
+                    cost = Integer.parseInt(riga[2]);
+                    costi[start][end] = cost;
+                    costi[end][start] = cost; //la matrice è simmetrica
+                }
+            }
+            for (int i = 0; i < DIM; i++) //riempio la diagonale con "-1"
+                costi[i][i] = -1;
+        } finally {
+            br.close(); //chiudo il file
         }
     }
 }
