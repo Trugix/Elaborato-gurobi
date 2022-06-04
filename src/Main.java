@@ -135,9 +135,7 @@ public class Main {
             for (GRBVar num : u) { //stampo l`ordine di percorrenza
                 if (n == (int) num.get(GRB.DoubleAttr.X)) {
                     int t = num.index();
-                    int r = t + 1;
-                    ordineSol.add(r);
-                    System.out.print(", " + (t + 1));
+                    System.out.print(", " + (t+1));
                     break;
                 }
             }

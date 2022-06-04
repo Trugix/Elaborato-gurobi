@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="245e50d0-9f35-403f-bb9c-7b14b77d2519" name="Changes" comment="gurobi quesito 1 e 2 e 3 fino a punto c">
+    <list default="true" id="245e50d0-9f35-403f-bb9c-7b14b77d2519" name="Changes" comment="gurobi quesito 1 e 2 e 3 fino a punto c fixed">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Elaborato2Coppia33.log" beforeDir="false" afterPath="$PROJECT_DIR$/Elaborato2Coppia33.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-    </list>
-    <list id="1fad0c2b-1c93-41f5-9bbc-a29ec5205cb0" name="Changes by Edoardo" comment="">
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -23,61 +20,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/src/Main.java">
-      <ranges>
-        <range start1="10" end1="10" start2="10" end2="11" changelist="1fad0c2b-1c93-41f5-9bbc-a29ec5205cb0" />
-        <range start1="56" end1="58" start2="57" end2="57" changelist="1fad0c2b-1c93-41f5-9bbc-a29ec5205cb0" />
-        <range start1="65" end1="66" start2="64" end2="68" changelist="1fad0c2b-1c93-41f5-9bbc-a29ec5205cb0" />
-        <range start1="67" end1="69" start2="69" end2="69" changelist="1fad0c2b-1c93-41f5-9bbc-a29ec5205cb0" />
-        <range start1="71" end1="71" start2="71" end2="105" changelist="1fad0c2b-1c93-41f5-9bbc-a29ec5205cb0" />
-        <range start1="76" end1="77" start2="110" end2="112" changelist="1fad0c2b-1c93-41f5-9bbc-a29ec5205cb0" />
-        <range start1="81" end1="83" start2="116" end2="118" changelist="1fad0c2b-1c93-41f5-9bbc-a29ec5205cb0" />
-        <range start1="84" end1="85" start2="119" end2="119" changelist="1fad0c2b-1c93-41f5-9bbc-a29ec5205cb0" />
-        <range start1="87" end1="88" start2="121" end2="149" changelist="1fad0c2b-1c93-41f5-9bbc-a29ec5205cb0" />
-        <range start1="92" end1="95" start2="153" end2="157" changelist="1fad0c2b-1c93-41f5-9bbc-a29ec5205cb0" />
-        <range start1="96" end1="97" start2="158" end2="159" changelist="245e50d0-9f35-403f-bb9c-7b14b77d2519" />
-        <range start1="99" end1="101" start2="161" end2="161" changelist="245e50d0-9f35-403f-bb9c-7b14b77d2519" />
-        <range start1="105" end1="107" start2="165" end2="166" changelist="245e50d0-9f35-403f-bb9c-7b14b77d2519" />
-        <range start1="108" end1="114" start2="167" end2="170" changelist="1fad0c2b-1c93-41f5-9bbc-a29ec5205cb0" />
-        <range start1="116" end1="117" start2="172" end2="173" changelist="1fad0c2b-1c93-41f5-9bbc-a29ec5205cb0" />
-        <range start1="120" end1="173" start2="176" end2="176" changelist="1fad0c2b-1c93-41f5-9bbc-a29ec5205cb0" />
-        <range start1="175" end1="176" start2="178" end2="179" changelist="1fad0c2b-1c93-41f5-9bbc-a29ec5205cb0" />
-        <range start1="177" end1="179" start2="180" end2="181" changelist="1fad0c2b-1c93-41f5-9bbc-a29ec5205cb0" />
-        <range start1="180" end1="223" start2="182" end2="182" changelist="1fad0c2b-1c93-41f5-9bbc-a29ec5205cb0" />
-        <range start1="225" end1="226" start2="184" end2="185" changelist="245e50d0-9f35-403f-bb9c-7b14b77d2519" />
-        <range start1="227" end1="230" start2="186" end2="189" changelist="1fad0c2b-1c93-41f5-9bbc-a29ec5205cb0" />
-        <range start1="240" end1="240" start2="199" end2="204" changelist="1fad0c2b-1c93-41f5-9bbc-a29ec5205cb0" />
-        <range start1="248" end1="248" start2="212" end2="217" changelist="1fad0c2b-1c93-41f5-9bbc-a29ec5205cb0" />
-        <range start1="255" end1="259" start2="224" end2="228" changelist="245e50d0-9f35-403f-bb9c-7b14b77d2519" />
-        <range start1="265" end1="267" start2="234" end2="236" changelist="245e50d0-9f35-403f-bb9c-7b14b77d2519" />
-        <range start1="273" end1="273" start2="242" end2="249" changelist="1fad0c2b-1c93-41f5-9bbc-a29ec5205cb0" />
-        <range start1="275" end1="282" start2="251" end2="253" changelist="245e50d0-9f35-403f-bb9c-7b14b77d2519" />
-        <range start1="283" end1="291" start2="254" end2="256" changelist="245e50d0-9f35-403f-bb9c-7b14b77d2519" />
-        <range start1="292" end1="292" start2="257" end2="266" changelist="1fad0c2b-1c93-41f5-9bbc-a29ec5205cb0" />
-        <range start1="294" end1="296" start2="268" end2="275" changelist="1fad0c2b-1c93-41f5-9bbc-a29ec5205cb0" />
-        <range start1="297" end1="298" start2="276" end2="277" changelist="1fad0c2b-1c93-41f5-9bbc-a29ec5205cb0" />
-        <range start1="299" end1="303" start2="278" end2="279" changelist="245e50d0-9f35-403f-bb9c-7b14b77d2519" />
-        <range start1="304" end1="310" start2="280" end2="283" changelist="245e50d0-9f35-403f-bb9c-7b14b77d2519" />
-        <range start1="311" end1="314" start2="284" end2="284" changelist="245e50d0-9f35-403f-bb9c-7b14b77d2519" />
-        <range start1="334" end1="335" start2="304" end2="310" changelist="1fad0c2b-1c93-41f5-9bbc-a29ec5205cb0" />
-        <range start1="347" end1="348" start2="322" end2="323" changelist="245e50d0-9f35-403f-bb9c-7b14b77d2519" />
-        <range start1="349" end1="350" start2="324" end2="325" changelist="1fad0c2b-1c93-41f5-9bbc-a29ec5205cb0" />
-        <range start1="352" end1="357" start2="327" end2="330" changelist="245e50d0-9f35-403f-bb9c-7b14b77d2519" />
-        <range start1="364" end1="373" start2="337" end2="343" changelist="245e50d0-9f35-403f-bb9c-7b14b77d2519" />
-        <range start1="375" end1="375" start2="345" end2="352" changelist="1fad0c2b-1c93-41f5-9bbc-a29ec5205cb0" />
-        <range start1="377" end1="381" start2="354" end2="360" changelist="1fad0c2b-1c93-41f5-9bbc-a29ec5205cb0" />
-        <range start1="391" end1="392" start2="370" end2="372" changelist="1fad0c2b-1c93-41f5-9bbc-a29ec5205cb0" />
-        <range start1="399" end1="400" start2="379" end2="379" changelist="1fad0c2b-1c93-41f5-9bbc-a29ec5205cb0" />
-        <range start1="402" end1="404" start2="381" end2="390" changelist="1fad0c2b-1c93-41f5-9bbc-a29ec5205cb0" />
-        <range start1="408" end1="409" start2="394" end2="395" changelist="1fad0c2b-1c93-41f5-9bbc-a29ec5205cb0" />
-        <range start1="412" end1="412" start2="398" end2="404" changelist="1fad0c2b-1c93-41f5-9bbc-a29ec5205cb0" />
-        <range start1="418" end1="419" start2="410" end2="411" changelist="1fad0c2b-1c93-41f5-9bbc-a29ec5205cb0" />
-        <range start1="422" end1="422" start2="414" end2="420" changelist="1fad0c2b-1c93-41f5-9bbc-a29ec5205cb0" />
-        <range start1="428" end1="429" start2="426" end2="472" changelist="1fad0c2b-1c93-41f5-9bbc-a29ec5205cb0" />
-      </ranges>
-    </file>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -96,6 +38,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;TODO_SCOPE&quot;: &quot;All Places&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
     &quot;last_opened_file_path&quot;: &quot;D:/Workspace/ElaboratoGruppo33/src&quot;,
@@ -140,7 +83,11 @@
       <workItem from="1653120027644" duration="8053000" />
       <workItem from="1653134911754" duration="8000" />
       <workItem from="1653645693735" duration="638000" />
-      <workItem from="1653913610983" duration="6616000" />
+      <workItem from="1653913610983" duration="6925000" />
+      <workItem from="1653998439144" duration="868000" />
+      <workItem from="1654083717121" duration="12000" />
+      <workItem from="1654329687220" duration="53000" />
+      <workItem from="1654331950457" duration="724000" />
     </task>
     <task id="LOCAL-00001" summary="gurobi quesito 1 e 2">
       <created>1653062549438</created>
@@ -163,7 +110,21 @@
       <option name="project" value="LOCAL" />
       <updated>1653128135453</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="gurobi quesito 1 e 2 e 3 fino a punto c fixed">
+      <created>1653920494677</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1653920494677</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Changes by Edoardo">
+      <created>1653920500412</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1653920500412</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -183,6 +144,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="gurobi quesito 1 e 2" />
     <MESSAGE value="gurobi quesito 1 e 2 e 3 fino a punto c" />
-    <option name="LAST_COMMIT_MESSAGE" value="gurobi quesito 1 e 2 e 3 fino a punto c" />
+    <MESSAGE value="gurobi quesito 1 e 2 e 3 fino a punto c fixed" />
+    <MESSAGE value="Changes by Edoardo" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changes by Edoardo" />
   </component>
 </project>
