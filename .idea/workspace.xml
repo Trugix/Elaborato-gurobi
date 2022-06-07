@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="245e50d0-9f35-403f-bb9c-7b14b77d2519" name="Changes" comment="gurobi quesito 1 e 2 e 3 fino a punto c fixed">
+    <list default="true" id="245e50d0-9f35-403f-bb9c-7b14b77d2519" name="Changes" comment="gurobi quesito 1 e 2 e 3 fino a punto c fixed 2 volte">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Elaborato2Coppia33.log" beforeDir="false" afterPath="$PROJECT_DIR$/Elaborato2Coppia33.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
+    <list id="a6e7f554-f51f-4350-9a51-ce45227c47c9" name="Changes by Edoardo" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -87,7 +88,10 @@
       <workItem from="1653998439144" duration="868000" />
       <workItem from="1654083717121" duration="12000" />
       <workItem from="1654329687220" duration="53000" />
-      <workItem from="1654331950457" duration="724000" />
+      <workItem from="1654331950457" duration="965000" />
+      <workItem from="1654416325256" duration="665000" />
+      <workItem from="1654517514240" duration="211000" />
+      <workItem from="1654603267164" duration="1962000" />
     </task>
     <task id="LOCAL-00001" summary="gurobi quesito 1 e 2">
       <created>1653062549438</created>
@@ -124,7 +128,14 @@
       <option name="project" value="LOCAL" />
       <updated>1653920500412</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="gurobi quesito 1 e 2 e 3 fino a punto c fixed 2 volte">
+      <created>1654332915105</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1654332915105</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -146,6 +157,7 @@
     <MESSAGE value="gurobi quesito 1 e 2 e 3 fino a punto c" />
     <MESSAGE value="gurobi quesito 1 e 2 e 3 fino a punto c fixed" />
     <MESSAGE value="Changes by Edoardo" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changes by Edoardo" />
+    <MESSAGE value="gurobi quesito 1 e 2 e 3 fino a punto c fixed 2 volte" />
+    <option name="LAST_COMMIT_MESSAGE" value="gurobi quesito 1 e 2 e 3 fino a punto c fixed 2 volte" />
   </component>
 </project>

@@ -196,7 +196,7 @@ public class Main {
      * @throws GRBException eccezione di gurobi da gestire
      */
     private static void loadObj() throws GRBException {
-        GRBQuadExpr obj = creaObiettivoQuad();
+        GRBLinExpr obj = creaObiettivo();
 
         model.setObjective(obj, GRB.MINIMIZE);
     }
@@ -266,18 +266,26 @@ public class Main {
      */
     private static void loadConstrArcoB() throws GRBException
     {
-        GRBQuadExpr constrArcoB1 = new GRBQuadExpr();
-        GRBQuadExpr constrArcoB2 = new GRBQuadExpr();
+        GRBLinExpr constrArcoB = new GRBLinExpr();
+        GRBLinExpr constrC1 = new GRBLinExpr();
+        GRBLinExpr constrCsupp1 = new GRBLinExpr();
+        GRBLinExpr constrC2 = new GRBLinExpr();
+        GRBLinExpr constrCsupp2 = new GRBLinExpr();
+
+        constrCsupp1.addTerm(-999, x[B1][B2]);
+        constrCsupp1.addConstant(1000);
+        constrC1.multAdd(C, constrCsupp1); //constraint in forma c*(1000-999*x[B1][B2]) se x[B1][B2] = 0 "c" sarà un numero altissimo, se x[B1][B2] = 1 "c" sarà c*1 ovvero se stessa.
+
+        constrCsupp2.addTerm(-999, x[B2][B1]);
+        constrCsupp2.addConstant(1000);
+        constrC2.multAdd(C, constrCsupp2); //constraint in forma c*(1000-999*x[B2][B1]) se x[B2][B1] = 0 "c" sarà un numero altissimo, se x[B2][B1] = 1 "c" sarà c*1 ovvero se stessa.
 
         GRBLinExpr objFantoccio = creaObiettivo();
 
-        for (int i=0; i<objFantoccio.size();i++) {
-            constrArcoB1.addTerm(1, objFantoccio.getVar(i), x[B1][B2]); //valore della funzione obiettivo moltiplicata per b1-b2 (0 od 1)
-            constrArcoB2.addTerm(1, objFantoccio.getVar(i), x[B2][B1]);//valore della funzione obiettivo moltiplicata per b2-b1 (0 od 1)
-        }
+        constrArcoB.add(objFantoccio); //valore della funzione obiettivo
 
-        model.addQConstr(constrArcoB1, GRB.LESS_EQUAL, C, "constrArcoB1");
-        model.addQConstr(constrArcoB2, GRB.LESS_EQUAL, C, "constrArcoB2");
+        model.addConstr(constrArcoB, GRB.LESS_EQUAL, constrC1, "constrArcoB1");
+        model.addConstr(constrArcoB, GRB.LESS_EQUAL, constrC2, "constrArcoB2");
     }
 
     /**
@@ -288,21 +296,6 @@ public class Main {
      */
     private static GRBLinExpr creaObiettivo() {
         GRBLinExpr obj = new GRBLinExpr();
-        for (int i = 0; i < DIM; i++) {
-            for (int j = 0; j < DIM; j++)
-                if (i != j)
-                    obj.addTerm(costi[i][j], x[i][j]);
-        }
-        return obj;
-    }
-    /**
-     * metodo di servizio
-     * crea una funzione obiettivo
-     *
-     * @return funzione obiettivo
-     */
-    private static GRBQuadExpr creaObiettivoQuad() {
-        GRBQuadExpr obj = new GRBQuadExpr();
         for (int i = 0; i < DIM; i++) {
             for (int j = 0; j < DIM; j++)
                 if (i != j)
